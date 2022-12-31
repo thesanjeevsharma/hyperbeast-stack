@@ -22,7 +22,12 @@ import { MyContext } from "./types";
   const RedisStore = connectRedis(session);
   const redisClient = new Redis();
 
-  app.use(cors());
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+      credentials: true,
+    })
+  );
 
   app.use(
     session({
@@ -52,7 +57,7 @@ import { MyContext } from "./types";
   apolloServer.applyMiddleware({
     app,
     cors: {
-      origin: ["http://localhost:3000"],
+      origin: "http://localhost:3000",
       credentials: true,
     },
   });
