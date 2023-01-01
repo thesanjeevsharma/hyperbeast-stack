@@ -110,6 +110,8 @@ export class UserResolver {
       };
     }
 
+    ctx.req.session.userId = user.id;
+
     return { user };
   }
 
